@@ -1,0 +1,42 @@
+            {% macro nav(val, user) %}
+            <div class="col-md-10" id="nav-tabs">
+                <div >
+                    <ul class="nav nav-tabs">
+                        <li id="li_profile"><a class='menu-item' href="{{url_for('my_profile')}}">My profile</a></li>
+                        <li id="li_fabbers"><a class='menu-item' href="./{{sept}}fabbers">Fabbers</a></li>
+                        <li id="li_fablabs"><a class='menu-item' href="./{{sept}}fablabs">Fablabs</a></li>
+                        <li id="li_blog"><a class='menu-item' href="./{{sept}}blog">Blog</a></li>
+                        {% if user.fablabs|length > 0%}
+                        <li id="li_fabex"><a class='menu-item' href="./{{sept}}fabx">New fabex</a></li>
+                        {% else %}
+                        <li class="disabled" id="li_fabex"><a class='menu-item' href="#">You must belong to a fablab</a></li>
+                        {% endif%}
+                        <li id="li_qrsearch"><a class='menu-item' href="./{{sept}}qrsearch">QR search</a></li>
+                        {% if session["admin"] %}
+                        <li id="li_admin" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Admin <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li id="li_machines"><a class='menu-item' href="./{{val}}machines">Machines management</a></li>
+                                <li id="li_admin_fablab"><a class='menu-item' href="./{{val}}adminfablab">Admin FabLab</a></li>
+
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {% if session["superuser"] %}
+                        <li id="li_superuser" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Fabexpertizer <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li id="li_manage_fablabs"><a class='menu-item' href="./{{val}}managefablabs">FabLabs management</a></li>
+
+                                <li id="li_fabbers_management"><a class='menu-item' href="./{{val}}managefabbers">Fabbers management</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endmacro %}

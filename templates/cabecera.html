@@ -1,0 +1,11 @@
+            {% macro header(val) %}
+            <div class="row">
+                <div id="header" class="col-sm-2 col-xs-8">
+                    <img src="./{{val}}img/fablab.png" alt="FabeXpertizer">
+                </div>
+
+                <div id="logout" class="col-sm-1 col-sm-offset-9 col-xs-4">
+                    <a href="./{{val}}index.html" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-off"></span></a>
+                </div>
+            </div>
+            {% endmacro %}

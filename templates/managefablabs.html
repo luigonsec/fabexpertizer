@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+            
+{% block content %}
+
+
+
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-2">
+        <h1>Manage FabLab</h1>
+    </div>
+</div>
+<div class="row">
+    <!--    REGISTER A NEW FABLAB  -->
+    <div class="col-sm-5 col-sm-offset-2 volatile" id="option-create-fablab">
+        <h3>Register a new Fablab</h3>
+        <form role="form" id="create-fablab-superuser">
+            <div class="form-group">
+                <label for="name">Fablab name (required)</label>
+                <input type="text" class="form-control" id="name-fablab-superuser" placeholder="Fablab Sevilla">
+            </div>
+            <div class="form-group">
+                <label for="fablab">Fablab name in Fabexpertizer (required)</label>
+                <input type="text" class="form-control" id="fablab-fablab-superuser" placeholder="fablabsevilla">
+            </div>
+            <div class="form-group">
+                <label for="phone">Email (required)</label>
+                <input type="email" class="form-control" id="email-fablab-superuser" placeholder="email">
+            </div>  
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description-fablab-superuser" placeholder="Fablab Sevilla ">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address-fablab-superuser" placeholder="Address">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone-fablab-superuser" placeholder="phone">
+            </div>   
+
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" id="photo-fablab-superuser">
+            </div>
+            <button type="button" class="btn btn-default" id="btn-fablab-superuser">Register</button>
+        </form>
+    </div>
+
+
+    <!--   APPOINT ADMIN -->
+    <div class="col-sm-5 col-sm-offset-2 volatile" id="option-appoint-admin">
+        <h3>Appoint Admin</h3>
+        <div class="form-group" id="fablabsSelectDiv">
+            <label for="fablab">FabLab</label>
+        </div>  
+        <div class="form-group" id="fabbersSelectDiv">
+            <label for="fabber">Fabbers</label>
+        </div>  
+        <button type="button" class="btn btn-default" id="btn-grant">Grant</button>
+
+
+    </div>
+
+
+
+    <!--   DELETE FABLAB -->
+    <div class="col-sm-5 col-sm-offset-2 volatile" id="option-delete-fablab">
+        <h3>Delete Fablab</h3>
+ 
+
+    </div>
+
+
+
+
+
+
+    <div class="col-sm-2 col-sm-offset-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="option-fablab-superuser" data-option="option-create-fablab"><a>Create Fablab</a></li>
+            <li class="option-fablab-superuser" data-option="option-appoint-admin"><a>Grant admin privileges</a></li>
+            <li class="option-fablab-superuser" data-option="option-delete-fablab"><a>Delete Fablab</a></li>
+        </ul>
+    </div>
+</div>    
+        
+{% endblock %}
+{% block javascript %}  
+<script id="fablabsSelect" type="text/template">
+    <select class="form-control" name="fablab">
+    [[#fablabs]]
+        <option val=[[fablab]]>[[fablab]]</option>
+    [[/fablabs]]
+    </select>
+</script>
+
+<script id="fabbersSelect" type="text/template">
+    <select class="form-control" name="fabber">
+    [[#fabbers]]
+        <option val=[[username]]>[[username]]</option>
+    [[/fabbers]]
+    </select>
+</script>
+
+    <script src="./{{sep}}js/managefablabs.js"></script>
+{% endblock %}
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>FabeXpertizer</title>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" href="./{{sep}}img/favicon.ico">
+        <meta name="viewport" content="width=device-width">
+        <!-- Latest compiled and minified CSS -->
+        <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="./{{sep}}css/bootstrap2.min.css">
+        <link rel="stylesheet" href="./{{sep}}css/alertify.core.css">
+        <link rel="stylesheet" href="./{{sep}}css/alertify.default.css">
+        <link rel="stylesheet" href="./{{sep}}css/alertify.bootstrap.css">
+        <link rel="stylesheet" href="./{{sep}}css/font-awesome.min.css">
+        
+        <link rel="stylesheet/less" type="text/css" href="./{{sep}}css/style.less">
+        <!--<link rel="stylesheet" type="text/css" href="./{{sep}}css/styles.css"> -->
+        {% block css %}{% endblock %}
+    </head>
+    <body>
+        
+        <div class="row corporative-background" id="top-nav">
+            <div class="col-md-1 col-md-offset-10">
+                <i id="bookmarkme" class="fa fa-star"></i>
+                {% if login %}
+                <i id="log-out" class="fa fa-power-off" ></i>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="container">
+            <div id="header" class="row">
+                <div class="col-md-2">
+                    <img src="./{{sep}}img/fablab.png" id="fabexpertizerlogo" alt="FabeXpertizer" >
+                </div>
+            {% if login %}
+            <div class="" id="nav-tabs">
+                <div >
+                    <ul class="nav nav-tabs">
+                        <li id="li_profile"><a class='menu-item' href="./{{val}}myprofile">My profile</a></li>
+                        <li id="li_fabbers"><a class='menu-item' href="./{{val}}fabbers">Fabbers</a></li>
+                        <li id="li_fablabs"><a class='menu-item' href="./{{val}}fablabs">Fablabs</a></li>
+                        <li id="li_blog"><a class='menu-item' href="./{{val}}blog">Blog</a></li>
+                        {% if user.fablabs|length > 0%}
+                        <li id="li_fabex"><a class='menu-item' href="./{{val}}fabx">New fabex</a></li>
+                        {% else %}
+                        <li class="disabled" id="li_fabex"><a class='menu-item' href="#">You must belong to a fablab</a></li>
+                        {% endif%}
+                        <li id="li_qrsearch"><a class='menu-item' href="./{{val}}qrsearch">QR search</a></li>
+                        {% if session["admin"] %}
+                        <li id="li_admin" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Admin <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li id="li_machines"><a class='menu-item' href="./{{val}}machines">Machines management</a></li>
+                                <li id="li_admin_fablab"><a class='menu-item' href="./{{val}}adminfablab">Admin FabLab</a></li>
+                                
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {% if session["superuser"] %}
+                        <li id="li_superuser" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Fabexpertizer <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li id="li_manage_fablabs"><a class='menu-item' href="./{{val}}managefablabs">FabLabs management</a></li>
+                                
+                                <li id="li_fabbers_management"><a class='menu-item' href="./{{val}}managefabbers">Fabbers management</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+            </div>
+            
+            {% block content %}{% endblock %}
+        </div>
+        <!--
+        <div class="row corporative-background" id="bottom-nav">
+            <div class="row col-md-1 col-md-offset-10">
+                <i class="fa fa-copyright float-right"></i>
+            </div>
+        </div>
+        -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!--<script src="./{{sep}}js/jquery-1.11.1.js"></script>-->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!--<script src="./{{sep}}js/bootstrap.min.js"></script>-->
+    <script src="./{{sep}}js/alertify.js"></script>
+    <!--<script src="./{{sep}}js/less-1.7.4.min.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.4/less.min.js"></script>
+    <script src="./{{sep}}js/mustache.js"></script>
+    <script src="./{{sep}}js/javaScript.js"></script>
+    {% block javascript %}{% endblock %}
+    </body>
+    
+</html>

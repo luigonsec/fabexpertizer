@@ -1,0 +1,193 @@
+
+{% macro fabbertemplate() %}
+    <template id="fabbers_template">
+        <div class='row box'>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class='col-sm-2 col-xs-4'>
+                        <div class='thumbnail'>
+                            <img class='photo-profile' alt='...'>
+                        </div>
+                    </div>
+                    <div class='col-sm-10 col-xs-6'>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="complete-name"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 section-username-fabber">
+
+                            </div>
+                            <div class="col-sm-3 section-fabexs-fabber">
+                                
+                            </div>
+                            <div class="col-sm-3 section-comments-fabber">
+                                
+                            </div>
+                            <div class="col-sm-3 section-follow-fabber">
+                                <button class="btn btn-default btn-follow">Follow</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+{% endmacro %}
+
+{% macro fablabtemplate() %}
+    <template id="fablabs_template">
+        <div class='row box'>
+            <div class="panel panel-default">
+                <div class="panel-body">   
+                    <div class='col-sm-2 col-xs-4'>
+                        <div class='thumbnail'>
+                            <img class='photo-fablab' alt='...'>
+                        </div>
+                    </div>
+                    <div class='col-sm-10 col-xs-6'>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="name"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 section-fablab-fablab">
+                                
+                            </div>
+                            <div class="col-sm-3 section-email-fablab">
+                                
+                            </div>
+                            <div class="col-sm-3 section-members-fablab">
+                                
+                            </div>
+                            <div class="col-sm-3 section-join-fablab">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+{% endmacro %}
+
+{% macro  machineTemplates() %}
+    <div id="machine_property_template" class="hidden" >
+        <div class="propertyDiv row well">
+            <div class="row">
+                <div class="col-sm-5">
+                    <input  type="text" placeholder="Property name" class="form-control  name input">
+                </div>
+                <div class="col-sm-5">
+                    <select class="form-control property-select type input" >
+                        <option value="" selected="selected">Select property type</option>
+                        <option value="text">Text</option>
+                        <option value="checkbox">Boolean</option>
+                        <option value="select">Select</option>
+                        <option value="date">Date</option>
+                    </select>
+                </div>
+                <div class="col-sm-1 ">
+                    <button type="button" class="btn btn-primary deleteProperty float-left"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <textarea placeholder="Property description" class="form-control description input"></textarea>
+        </div>
+    </div>
+    <div id="form_item_template" class="hidden" >
+        <input class="form-control example input text" type="text" placeholder="Property name">
+        <label class="example checkbox"><input class="input" type="checkbox"> Property name</label>
+        <div class="select example">
+            <select class="form-control example input">
+                <option value="" selected="selected">Select property value</option>
+                <option value="">Value 1</option>
+                <option value="">Value 2</option>
+                <option value="">Value 3</option>
+                <option value="">Value 4</option>
+            </select>
+            <textarea placeholder="Property values sparated by coma" class="form-control values example input"></textarea>
+        </div>
+        <input class="form-control example input date" type="date">
+    </div>
+    
+{% endmacro %}
+
+
+{% macro fabberManagementTemplates() %}
+    <div id="fabber_row_template" class="hidden" >
+        <table class="table table-condensed panel">
+            <thead class="panel-heading">
+                <tr >
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th>Add/remove admin</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"  class="panel-body">
+                <tr class="user-row admin-row">
+                    <td class="id"></td>
+                    <td class="username"></td>
+                    <td class="email"></td>
+                    <td class="is-admin"></td>
+                    <td class="action"> <i username="" class="btn btn-default remove-admin fa fa-minus fa-2x"></i> </td>
+                    <td class="delete"> <i username="" class="btn btn-default delete-user fa fa-trash fa-2x"></i> </td>
+                </tr>
+                <tr class="user-row no-admin-row">
+                    <td class="id"></td>
+                    <td class="username"></td>
+                    <td class="email"></td>
+                    <td class="is-admin"></td>
+                    <td class="action"> <i username="" class="btn btn-default add-admin fa fa-plus fa-2x"></i> </td>
+                    <td class="delete"> <i username="" class="btn btn-default delete-user fa fa-trash fa-2x"></i> </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul >
+            <li class="page" ><a  href="#"></a></li>
+        </ul>
+    </div>
+
+{% endmacro %}
+
+
+{% macro blogTemplates() %}
+<div id="blog_templates" class="hidden" >
+    <div class="blog-element col-sm-6 col-xs-12">
+        <a class="fabbex-link">
+            <h3 class="fabbex-title"></h3>
+        </a>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-lg-6 col-lg-offset-0 col-xs-8 col-xs-offset-2">
+                    <div class="thumbnail">
+                        <img id="fabbex-photo-front" src="">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xs-12">
+
+                    <div class="col-sm-12 fabbex-author">
+                        <i class="fa fa-user"></i>
+                        <label>Author:</label>
+                    </div>
+                    <div class="col-sm-12 fabbex-fablab">
+                        <i class="fa fa-institution"></i>
+                        <label>Fablab:</label>
+                    </div>
+                    <div class="col-sm-12 fabex-machine">
+                        <i class="fa fa-gears"></i>
+                        <label>Machine:</label>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endmacro %}

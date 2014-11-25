@@ -1,0 +1,121 @@
+  {% extends "base.html" %}
+ 
+
+{% block content %}
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-12" >
+                            <div class="thumbnail">
+                                <img class="photo-profile" alt="...">
+                                <div class="caption">
+                                    <button  data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary btn-lg btn-block">Editar perfil</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul class="list-group">
+                              <li class="list-group-item">Cras justo odio</li>
+                              <li class="list-group-item">Dapibus ac facilisis in</li>
+                              <li class="list-group-item">Morbi leo risus</li>
+                              <li class="list-group-item">Porta ac consectetur ac</li>
+                              <li class="list-group-item">Vestibulum at eros</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 id="title-option-profile"><h2>
+                        </div>       
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="body-option-profile">
+ 
+                            </div>
+                        </div>       
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2">
+                   <div class="row">
+                       <ul class="nav nav-pills nav-stacked option-profile">
+                            <li id="option-profile-fabexs" class="option-profile-item"><a href="#">Fabexs</a></li>
+                            <li id="option-profile-likes" class="option-profile-item"><a href="#">Likes</a></li>
+                            <li id="option-profile-comments" class="option-profile-item"><a href="#">Comments</a></li>
+                            <li id="option-profile-followers" class="option-profile-item"><a href="#">Followers</a></li>
+                            <li id="option-profile-followings" class="option-profile-item"><a href="#">Followings</a></li>
+                        </ul>
+                   </div>   
+                </div>
+            </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit you profile</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2" >
+                <label>Photo profile</label>
+                <div class="thumbnail">
+                    <img class="photo-profile" alt="...">
+                    <div class="caption">
+                      <input type="file" size="1">
+                    </div><label id="status_upload_profile_photo"></label>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                  <div class="form-group">
+                <form role="form">
+                    <label for="exampleInputEmail1">Current password</label>
+                    <input type="password" class="form-control" id="current-password" placeholder="Current password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">New password</label>
+                    <input type="password" class="form-control" id="new-password" placeholder="New password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Verify password</label>
+                    <input type="password" class="form-control" id="verify-password" placeholder="Verify password">
+                  </div>
+                   <button type="button" id="btn-change-password" class="btn btn-default">Change password</button>
+                </form>
+            </div>
+            <div class="col-sm-7">
+              <label>Help</label>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  Password length must be longer than six characters<br><br>
+                  Password must only include "<strong>. , : - _ a-Z 0-9 () [] </strong>"<br><br>
+                  New password must be the same than verify password
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block javascript %}  
+    <script src="./js/myprofile.js"></script>
+{% endblock %}

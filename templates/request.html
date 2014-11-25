@@ -1,0 +1,18 @@
+{% macro request(user) %}
+
+    <div id="{{user}}-request" class="panel panel-default col-sm-4">
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <h4>Request from <a href="./fabbers/{{ user }}">{{user}}</a></h4>
+            </div>
+            <div class="col-xs-6">
+                <button data-user="{{user}}" class="accept-user btn-block btn btn-default">Aceptar</button>
+            </div>
+            <div class="col-xs-6">
+                <button data-user="{{user}}" class="cancel-user btn-block btn btn-default">Rechazar</button>
+            </div>
+        </div>
+
+    </div>
+
+{% endmacro %}

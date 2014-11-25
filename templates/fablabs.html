@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+ {% block content %}
+
+    {% from "templates.html" import fablabtemplate %}
+
+    <div class="row content-fablab-view">
+        
+        <div class="col-sm-8">
+            <h2>FabLabs</h2>
+            <div class="box-fablab-view">
+                
+            </div>
+        </div>
+
+        <div class="row col-sm-2 col-sm-offset-1">
+            <div class="row">
+                <h3> Options </h3>  
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-6">
+                    <label>Sort</label>
+                    <select id="sort-input-fablab" class="form-control">
+                        <option value="fablab">Fablab</option>
+                        <option value="name">Name</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 col-xs-6">
+                    <label>Order</label>
+                    <select id="order-input-fablab" class="form-control">
+                        <option value="ASC">ASCENDING</option>
+                        <option value="DESC">DESCENDING</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    {{ fablabtemplate() }}
+
+{% endblock %}
+{% block javascript %}  
+    <script src="./{{sep}}js/fablabs.js"></script>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+            
+
+
+
+
+
+{% block content %}
+
+            <div class="row">
+                <div id="machines" class="col-sm-10">
+                    <h2 class="text-center">Machines management</h2>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group general-item">
+                            <div class="btn-group col-sm-offset-5" data-toggle="buttons">
+                                <label id="create" class="btn btn-info switch active">
+                                    <input type="radio" name="type">
+                                        Create </label>
+                                <label id="modify" class="btn btn-warning switch">
+                                    <input type="radio" name="type">
+                                        Modify</label>
+                                <label id="delete" class="btn btn-danger switch">
+                                    <input type="radio" name="type">
+                                        Delete</label>
+                            </div>
+                        </div>
+                        <div id="machine">
+                            <div class="form-group general-item">
+                                <div class="col-sm-offset-2 col-sm-8 ">
+                                    <input type="text" class="form-control" id="name" placeholder="Machine name">
+                                </div>
+                                <div class="col-sm-offset-2 col-sm-8 ">
+                                    <select class="form-control hidden" id="selected-machine">
+                                        <option value="" selected="selected">Select machine</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group general-item">
+                                <div class="col-sm-offset-2 col-sm-8 ">
+                                    <input type="text" class="form-control input" id="model" placeholder="Machine model">
+                                </div>
+                            </div>
+                            <div class="form-group general-item ">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <textarea resize="none" class="form-control input" id="description" placeholder="Description"></textarea>
+                                </div>
+                            </div>
+                            <div class='form-group general-item' id="btn_add_property">
+                                <div class="col-sm-offset-2 col-sm-8">
+                            Add property <button type='button' id='addProperty' class='btn btn-xs btn-primary input'><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-group general-item ">
+                                <fieldset id="fieltset" class="col-sm-offset-2 col-sm-8 hidden">
+                                    <legend>Properties</legend>
+                                    <div id="properties">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class='from-group general-item'>
+                                <div class='col-sm-offset-2 col-sm-8'>
+                                    <button id="submit" class='btn btn-primary'>Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {%from "adminmenu.html" import menu %}
+                {{ menu(user=user) }}
+            </div>
+        {% from "templates.html" import machineTemplates %}
+        {{ machineTemplates()}}
+{% endblock %}
+{% block javascript %}  
+    <script src="./js/machines.js"></script>
+{% endblock %}
+

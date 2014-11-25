@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+            
+{% block content %}
+            {% from "request.html" import request %}
+
+<h1>{{ fablab.name }}</h1>
+<h2>Peticiones</h2>
+    {% for peticion in fablab.requests %}
+        {{ request(peticion) }}
+    {% endfor %}
+
+
+{% endblock %}
+{% block javascript %}  
+    <script src="./js/adminfablab.js"></script>
+{% endblock %}
+

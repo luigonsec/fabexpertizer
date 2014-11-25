@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+            
+{% block content %}
+
+
+<div class="row">
+    <div class="col-sm-8 col-md-offset-2">
+        <h2 class="text-center">Users management</h2>
+        <table class="table table-condensed panel">
+            <thead class="panel-heading">
+                <tr >
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th>Add/remove admin</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"  class="panel-body">
+                
+                <tr id="paginator-row" class="hidden">
+                    <td class="text-center" colspan="6" >
+                        <ul id="paginator" page="0" class="pagination">
+                            <li id="previous-page" class="hidden"><a href="#" >&laquo;</a></li>
+
+                            <li id="next-page"><a href="#">&raquo;</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+{% from "templates.html" import fabberManagementTemplates %}
+{{ fabberManagementTemplates()}}
+
+{% endblock %}
+{% block javascript %}  
+    <script src="./js/managefabbers.js"></script>
+{% endblock %}
+

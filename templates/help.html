@@ -1,0 +1,384 @@
+
+<html>
+<head>
+<style type="text/css">
+
+	.api_title{
+		border-bottom: 5px solid black;
+		padding: 15px;
+		height: 60px;
+		margin-bottom: 20px;
+	}
+	.api_footer{
+		border-top: 5px solid black;
+		padding: 15px;
+		text-align: right;
+	}
+	.title{
+		padding:14px;
+		background-color: #D6D6D6;
+		border: 1px solid #A4A4A4;
+		border-radius: 2px;
+	}
+	code{
+		padding: 2px 4px;
+		color: black;
+		white-space: nowrap;
+		background-color: #f7f7f9;
+		border: 1px solid #e1e1e8;
+		}
+	.api_request{
+		margin-bottom: 10px;
+	}
+	.api_parameters{
+		margin-bottom: 10px;
+	}
+
+	.subtitle{
+		background-color: #DFDFDF;
+		padding:10px;
+		background-color: #f7f7f9;
+		border: 1px solid #e1e1e8;
+
+	}
+	body{
+		font-family: "Arial";
+
+	}
+	li{
+
+		list-style-type:none;
+	}
+	blockquote{
+	margin-left: 10px;
+	border-left: 5px solid #eee;
+	padding-left: 10px;
+	}
+	.api_title_image{
+		width: 20%;
+		float: left;
+	}
+	.api_title_text{
+		width: 80%;
+		float: right;
+	}
+</style>
+</head>
+<body>
+<div class='api_title'>
+<div class='api_title_image'>
+<img src="./../img/fablab.png" alt="FabeXpertizer">
+</div>
+<div class='api_title_text'>
+<h1>FabeXpertizer API documentation</h1>
+</div>
+</div>
+<code>Current API version <strong>/api/v1/</strong></code>
+<h2 class='title'>Fabbers</h2>
+	<h4>Properties</h4>
+	<ul>
+		<li><code>name</code> : String </li>
+		<li><code>surname</code> : String</li>
+		<li><code>username</code> : String</li>
+		<li><code>email</code> : String</li>
+		<li><code>password</code> : String</li>
+	</ul>
+<h3 class='subtitle'>GET</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>fabbers/</code><br>
+	<p>Return all fabbers stored in database.<br>
+	If it is a successful query, will return a <code>200 OK</code> and a JSON object with these properties:<br><code>{"name" : "stored_name" , "surname" : "stored_surname", "username" : "stored_username", "email" : "stored_email", "password" : "stored_password"}</code><br><br> 
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br> 
+	<code>{"reason" : "No elements were found"}</code><br><br>
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>fabbers/username</code><br>
+	<p>Returns the fabber whose username match with the specified.<br>
+	If it is a successful query, will return a <code>200 OK</code> and the JSON object.<br>
+	<code>{"name" : "stored_name" , "surname" : "stored_surname", "username" : "stored_username", "email" : "stored_email", "password" : "stored_password"}</code><br><br>  
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br> 
+	</div>
+</blockquote>
+
+
+<h3 class='subtitle'>POST</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>fabbers/</code><br>
+	<p>Add in the database an JSON object with these properties: 
+	<code>{"name" : "example_name", "surname" : "example_surname", "username" : "example_username", "email" : "email@example.com", "password" : "example_pass"}</code><br><br>
+	If it is a successful query, will return a <code>201 CREATED</code>.<br>
+	<code>{"added" : "yes"}</code><br><br> 
+	If <code>email</code> or <code>username</code> are already registered, the server will send a <code>409 CONFLICT</code>.<br>
+	<code>{"added" : "no", "The username/email is already registered"}</code><br><br>  
+	Otherwise, a <code>500 INTERNAL SERVER ERROR</code> will be through. 
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>fabbers/username</code><br>
+	<p>This REST API does not allow any POST call over a specific resource, thus a <code>400 BAD REQUEST</code> will be through.<br>
+	<code>{"added" : "no", "reason" : "This request is not supported. For more information visit the API documetation", "url" : "http://fabexpertizer.herokuapp.com"}</code><br><br>
+	</p>
+	</div>
+</blockquote>
+<h3 class='subtitle'>PUT</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>fabbers/</code><br>
+	<p>This REST API does not allow any PUT call over a entire collection, thus a <code>400 BAD REQUEST</code> will be through.</p>
+	<code>{"updated" : "no", "reason" : "This request is not supported. For more information visit the API documetation", "url" : "http://fabexpertizer.herokuapp.com"}</code><br><br>
+	</div>
+	<div class='api_request'>
+	<code>fabbers/username</code><br>
+	<p>
+	If there is a record with <code>username</code>, the resource will be updated with the JSON object data with some of these properties:
+	<code>{"name" : "new_name" , "surname" : "new_surname", "password" : "new_password"}</code> <br><br>
+		Iff it is a successful query, will return a 200 OK and the JSON object.<br>
+		<code>{"updated" : "yes"}</code><br><br> 
+	If especified <code>surname</code> does not exist, a <code>404 NOT FOUND</code> will be through.<br> 
+	Whatever API call done with other parameters than above will return a <code>400 BAD REQUEST</code> .
+	</p>
+	</div>
+	<br>
+
+
+</blockquote>
+<h3 class='subtitle'>DELETE</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>fabbers/</code><br>
+	<p>Delete all fabbers stored in database.<br>
+	If it is a successful query, will return a <code>200 OK</code>and a JSON object telling that the resources has been removed: <br><code>{"deleted" : "yes"}</code><br><br> 
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>fabbers/username</code><br>
+	<p>Delete the fabber whose username match with the specified.<br>
+	If it is a successful query, will return a <code>200 OK</code> and the JSON object containing the information about the proccess.<br>
+	<code>{"deleted" : "yes"}</code><br><br> 
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{"deleted" : "no", "reason" : "Username does not exist"}</code><br><br> 
+	</div>
+</blockquote>
+
+<!--
+
+
+                                        MATERIALES
+
+
+
+-->
+
+<h2 class='title'>Materials</h2>
+	<h4>Properties</h4>
+	<ul>
+		<li><code>name</code> : String</li>
+		<li><code>thicknesses</code> : List of Numbers</li>
+	</ul>
+<h3 class='subtitle'>GET</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>materials/</code><br>
+	<p>Return all materials stored in database.<br>
+	If it is a successful query, will return a <code>200 OK</code> and a JSON object with these properties:<br><code>{"name" : "stored_name" , "thicknesses" : [th0,...,thn]}</code><br><br> 
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{"reason" : "No elements were found"}</code><br><br> 
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>materials/name</code><br>
+	<p>Returns the material whose name match with the specified.<br>
+	If it is a successful query, will return a <code>200 OK</code> and the JSON object.<br>
+	<code>{"name" : "stored_name" , "thicknesses" : [th0,...,thn]}</code><br><br> 
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{"reason" , "No elements were found"}</code><br><br>
+	</p>
+	</div>
+</blockquote>
+
+
+<h3 class='subtitle'>POST</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>materials/</code><br>
+	<p>Add in the database an JSON object with these properties: 
+	<code>{"name" : "example_name", "thicknesses" : [th0, ... , thn]</code><br><br>
+	If it is a successful query, will return a <code>201 CREATED</code>.<br>
+	<code>{"added" : "yes"}</code><br><br> 
+	If <code>email</code> or <code>username</code> are already registered, the server will send a <code>409 CONFLICT</code>.<br>
+	<code>{"added" : "no", "reason" : "Material's name introduced already exists"}</code><br><br> 
+	Otherwise, a <code>500 INTERNAL SERVER ERROR</code> will be through.<br>
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>materials/username</code><br>
+	<p>This REST API does not allow any POST call over a specific resource, thus a <code>400 BAD REQUEST</code> will be through.<br>
+	<code>{'added' : 'no', 'reason' : 'This request is not supported. For more information visit the API documetation', 'url' : 'http://fabexpertizer.herokuapp.com'}</code><br><br> </p>
+	</div>
+</blockquote>
+<h3 class='subtitle'>PUT</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>materials/</code><br>
+	<p>This REST API does not allow any PUT call over a entire collection, thus a <code>400 BAD REQUEST</code> will be through.<br>
+	<code>{'updated' : 'no', 'reason' : 'This request is not supported. For more information visit the API documetation', 'url' : 'http://fabexpertizer.herokuapp.com'}</code><br><br> </p>
+	</div>
+	<div class='api_request'>
+	<code>materials/name</code><br>
+	<p>
+	If there is a record with <code>name</code>, the resource will be updated with the JSON object data with some of these properties:
+	<code>{"name" : "new_name" , "thicknesses" : [th0,...,thn]</code> <br><br>
+	If it is a successful query, will return a 200 OK and the JSON object.<br>
+	<code>{"updated" : "yes"}</code><br><br> 
+	If especified <code>surname</code> does not exist, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{'updated' : 'no', 'reason' : 'This request is not supported. For more information visit the API documetation', 'url' : 'http://fabexpertizer.herokuapp.com'}</code><br><br> 
+	Whatever API call done with other parameters than above will return a <code>400 BAD REQUEST</code> .
+	</p>
+	</div>
+	<br>
+
+
+</blockquote>
+<h3 class='subtitle'>DELETE</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>materials/</code><br>
+	<p>Delete all materials stored in database.<br>
+	If it is a successful query, will return a <code>200 OK</code>and a JSON object telling that the resources has been removed: <br>
+	<code>{"deleted" : "yes"}</code><br><br> 
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>materials/name</code><br>
+	<p>Delete the fabber whose name match with the specified.<br>
+	If it is a successful query, will return a <code>200 OK</code> and the JSON object containing the information about the proccess.<br>
+	<code>{"deleted" : "yes"}</code><br><br> 
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{"deleted" : "no", "reason" : "Material's name does not exist"}}</code><br><br> 
+	</div>
+</blockquote>
+
+
+<!--
+
+     							FABEXS
+
+
+-->
+<h2 class='title'>Fabexs</h2>
+	<h4>Properties</h4>
+	<ul>
+		<li><code>oid</code> : Integer (auto-generated)</li>
+		<li><code>name</code> : String</li>
+		<li><code>material</code> : Material</li>
+		<li><code>power</code> : Number (0 - 100)</li>
+		<li><code>corner_power</code> : Number (0 - 100)</li>
+		<li><code>cut_velocity</code> : Number (0 - 22000)</li>		
+		<li><code>username</code> : String</li>
+		<li><code>description</code> : String</li>		
+	</ul>
+<h3 class='subtitle'>GET</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>fabexs/</code><br>
+	<p>Return all fabexs stored in database.<br>
+	If it is a successful query, will return a <code>200 OK</code> and a JSON object with these properties:<br>
+	<code>{"name" : "stored_name" , "material" : {"name" : "material_name" , thickness : "stored_thickness"}, "power" : "stored_power", "corner_power" : "stored_corner_power", "cut_velocity" : "stored_velocity", "username" : "stored_username", "description" : "stored_description"}</code><br><br> 
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{"reason" : "No elements were found"}</code><br><br> 
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>fabexs/name</code><br>
+	<p>Returns the material whose name match with the specified.<br>
+	If it is a successful query, will return a <code>200 OK</code> and the JSON object.<br>
+	<code>{"name" : "stored_name" , "material" : {"name" : "material_name" , thickness : "stored_thickness"}, "power" : "stored_power", "corner_power" : "stored_corner_power", "cut_velocity" : "stored_velocity", "username" : "stored_username", "description" : "stored_description"}</code><br><br> 
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{"reason" , "No elements were found"}</code><br><br>
+	</p>
+	</div>
+</blockquote>
+
+
+<h3 class='subtitle'>POST</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>fabexs/</code><br>
+	<p>Add in the database an JSON object with these properties: 
+	<code>{"name" : "new_name" , "material" : {"name" : "material_name" , thickness : "new_thickness"}, "power" : "new_power", "corner_power" : "new_corner_power", "cut_velocity" : "new_velocity", "username" : "new_username", "description" : "new_description"}</code><br><br> 
+	If it is a successful query, will return a <code>201 CREATED</code>.<br>
+	<code>{"added" : "yes"}</code><br><br> 
+	Whatever API call done with other parameters than above will return a <code>400 BAD REQUEST</code> .<br>
+	<code>{"error" : "Bad Request", "reason" : "The property xxxxx must be especified." }</code><br><br> 
+	Otherwise, a <code>500 INTERNAL SERVER ERROR</code> will be through.<br>
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>fabexs/name</code><br>
+	<p>This REST API does not allow any POST call over a specific resource, thus a <code>400 BAD REQUEST</code> will be through.<br>
+	<code>{'added' : 'no', 'reason' : 'This request is not supported. For more information visit the API documetation', 'url' : 'http://fabexpertizer.herokuapp.com'}</code><br><br> </p>
+	</div>
+</blockquote>
+<h3 class='subtitle'>PUT</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>fabexs/</code><br>
+	<p>This REST API does not allow any PUT call over a entire collection, thus a <code>400 BAD REQUEST</code> will be through.<br>
+	<code>{'updated' : 'no', 'reason' : 'This request is not supported. For more information visit the API documetation', 'url' : 'http://fabexpertizer.herokuapp.com'}</code><br><br> </p>
+	</div>
+	<div class='api_request'>
+	<code>fabexs/oid</code><br>
+	<p>
+	If there is a record with <code>oid</code>, the resource will be updated with the JSON object data with some of these properties:
+	<code>{"name" : "new_name" , "description" : "new_description"}</code> <br><br>
+	If it is a successful query, will return a 200 OK and the JSON object.<br>
+	<code>{"updated" : "yes"}</code><br><br> 
+	If especified <code>oid</code> does not exist, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{"error" : "Not Found", "reason" : "The oid especified has not been found in the database." }</code><br><br> 
+	Whatever API call done with other parameters than above will return a <code>400 BAD REQUEST</code> .
+	</p>
+	</div>
+	<br>
+
+
+</blockquote>
+<h3 class='subtitle'>DELETE</h3>
+<blockquote>
+	<div class='api_request'>
+	<code>fabexs/</code><br>
+	<p>Delete all fabexs stored in database.<br>
+	If it is a successful query, will return a <code>200 OK</code>and a JSON object telling that the resources has been removed: <br>
+	<code>{"deleted" : "yes"}</code><br><br> 
+	</p>
+	</div>
+	<br>
+
+	<div class='api_request'>
+	<code>fabexs/name</code><br>
+	<p>Delete the fabber whose name match with the specified.<br>
+	If it is a successful query, will return a <code>200 OK</code> and the JSON object containing the information about the proccess.<br>
+	<code>{"deleted" : "yes"}</code><br><br> 
+	Otherwise, a <code>404 NOT FOUND</code> will be through.<br>
+	<code>{"deleted" : "no", "reason" : "Fabex's name does not exist"}}</code><br><br> 
+	</div>
+</blockquote>
+<h2 class='api_footer'>FabeXpertizer API Reference</h2>

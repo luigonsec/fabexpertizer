@@ -1,0 +1,111 @@
+
+{% extends "base.html" %}
+
+
+            
+ {% block content %} 
+
+                <h2 class="text-center" >Create a new fabex</h2>
+                <form id="form" page="0" class="form-horizontal" role="form">
+                    <div id="general" class="hidden">
+                        <div class="form-group general-item">
+                             <div class="col-sm-offset-2 col-sm-8 ">
+                                <label>Title</label>
+                                <input type="text" class="form-control" id="title" placeholder="Fabx title">
+                            </div>
+                        </div>
+                        <div class="form-group general-item ">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <label>Description</label>
+                                <textarea class="form-control" id="description" placeholder="Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group general-item ">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <label for="source">Source file</label>
+                                <input type="file" id="source" >
+                                <p class="help-block">Select the source file.</p>
+                            </div>
+                        </div>
+                        {% if user.admin %}
+                        <div class="form-group general-item ">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <label>Author</label>
+                                <select class="form-control" data-admin="1" id="author">
+                                    <option value="" selected="selected">Who is the author?</option>
+                                </select>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="form-group general-item hidden">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <input type="text" class="form-control " id="author" placeholder="Fabx title" value="{{ user.username}}">
+                            </div>
+                        </div>       
+                        {% endif %}
+
+                        <div class="form-group general-item ">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <label>Fablab</label>
+                                <select class="form-control" id="selected-fablab">
+                                    <option value="" selected="selected">Where did you make it?</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <label>
+                                    <input type="checkbox" id="blog" > Mark to show on blog.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <select class="form-control" id="selected-machine">
+                                    <option value="" selected="selected">Select machine</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="machine" class="hidden">
+                        <div id="machine-properties">
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <button id="send" type="button" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="photo-form" >
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-4">
+                                <video id="video"  autoplay width="320px" height="240px"></video>
+                                <canvas id="photo-canvas" class="hidden" width="2px" height="2px"></canvas>
+                            </div>
+                        </div>
+                        <div id="photo" class="row form-group">
+                            <div id="photo-front" class="col-md-4">
+                                <img id="btn-front" src="./img/photo-front.svg" alt="Click here to get the front photo" class="img-thumbnail">
+                                    </div>
+                            <div id="photo-top" class="col-md-4" >
+                                <img id="btn-top" src="./img/photo-top.svg" alt="Click here to get the top photo"  class="img-thumbnail" >
+                                    </div>
+                            <div id="photo-left" class="col-md-4">
+                                <img id="btn-left"  src="./img/photo-left.svg" alt="Click here to get the left photo"  class="img-thumbnail" >
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+                <ul class="pager">
+                    <li ><a id="previous" href="#" class="hidden">Previous</a></li>
+                    <li ><a id="next" href="#">Next</a></li>
+                </ul>
+            
+{% endblock %}
+{% block javascript %}  
+    <script src="./js/fabx.js"></script>
+{% endblock %}
+
