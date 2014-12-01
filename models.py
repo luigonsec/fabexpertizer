@@ -133,7 +133,7 @@ class Fabber(Model):
 		return True
 	
 	def add_like(self,username,oid):
-		if self.__model.find_one({"username" : username, "$in" : {"likes" : [oid]}}):
+		if self.__model.find_one({"username" : username, "likes" : { "$in" : [oid]}}):
 			return False
 		self.__model.update({"username" : username},{"$push" : {"likes" : oid}})
 		return True
@@ -168,7 +168,7 @@ class Fabber(Model):
 			return False
 
 	def delete_like(self,username,oid):
-		if not self.__model.find({"username" : username, "$in" : {"likes" : [oid]}}):
+		if not self.__model.find({"username" : username, "likes" : { "$in" : [oid]}}):
 			return False
 		self.__model.update({"username" : username},{"$pull" : {"likes" : oid}})
 		return True
@@ -390,7 +390,7 @@ class Fabex(Model):
 		return True if res else False
 
 	def add_like(self,oid,username):
-		if self.__model.find_one({"_id" : oid, "$in" : {"likes" : [username]}}):
+		if self.__model.find_one({"_id" : oid, "likes" : { "$in" : [username]}}):
 			return False
 		self.__model.update({"_id" : oid},{"$push" : {"likes" : username}, "$inc" : {"totalLikes" : 1}})
 		return True
@@ -408,7 +408,7 @@ class Fabex(Model):
 		return True
 
 	def delete_like(self,oid,username):
-		if not self.__model.find({"_id" : oid, "$in" : {"likes" : [username]}}):
+		if not self.__model.find({"_id" : oid, "likes" : { "$in" : [username]}}):
 			return False
 		self.__model.update({"_id" : oid},{"$pull" : {"likes" : username} , "$inc" : {"totalLikes" : -1}})
 		return True

@@ -1,3 +1,5 @@
+var form='create';
+
 $(document).ready(function(){
 
     $("#li_admin").attr("class","active");
@@ -43,7 +45,7 @@ $(document).ready(function(){
         }
     });
     $('.switch').on('click',function(){
-        var form =$(this).attr('id');
+        form =$(this).attr('id');
         showForm(form);
         $('#properties').children().remove();
     });
@@ -105,7 +107,7 @@ function showPropertyExample(div, type){
     div.append(input);
 }
 
-function getMachineObject(form){
+function getMachineObject(){
     var propertiesArray = new Array();
     var propertiesDiv=$('#properties').children();
     var div = propertiesDiv.first('div');
@@ -121,7 +123,7 @@ function getMachineObject(form){
     }
     var machineName=null;
     if (form=='create'){
-        machineName=$('#name').val();
+        machineName=$('#name1').val();
     }else{
         machineName=$('#selected-machine').val();
     }

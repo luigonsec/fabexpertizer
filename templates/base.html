@@ -42,23 +42,23 @@ and open the template in the editor.
             <div class="" id="nav-tabs">
                 <div >
                     <ul class="nav nav-tabs">
-                        <li id="li_profile"><a class='menu-item' href="./{{val}}myprofile">My profile</a></li>
-                        <li id="li_fabbers"><a class='menu-item' href="./{{val}}fabbers">Fabbers</a></li>
-                        <li id="li_fablabs"><a class='menu-item' href="./{{val}}fablabs">Fablabs</a></li>
-                        <li id="li_blog"><a class='menu-item' href="./{{val}}blog">Blog</a></li>
+                        <li id="li_profile"><a class='menu-item' href="./{{sep}}myprofile">My profile</a></li>
+                        <li id="li_fabbers"><a class='menu-item' href="./{{sep}}fabbers">Fabbers</a></li>
+                        <li id="li_fablabs"><a class='menu-item' href="./{{sep}}fablabs">Fablabs</a></li>
+                        <li id="li_blog"><a class='menu-item' href="./{{sep}}blog">Blog</a></li>
                         {% if user.fablabs|length > 0%}
-                        <li id="li_fabex"><a class='menu-item' href="./{{val}}fabx">New fabex</a></li>
+                        <li id="li_fabex"><a class='menu-item' href="./{{sep}}fabx">New fabex</a></li>
                         {% else %}
                         <li class="disabled" id="li_fabex"><a class='menu-item' href="#">You must belong to a fablab</a></li>
                         {% endif%}
-                        <li id="li_qrsearch"><a class='menu-item' href="./{{val}}qrsearch">QR search</a></li>
+                        <li id="li_qrsearch"><a class='menu-item' href="./{{sep}}qrsearch">QR search</a></li>
                         {% if session["admin"] %}
                         <li id="li_admin" class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 Admin <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li id="li_machines"><a class='menu-item' href="./{{val}}machines">Machines management</a></li>
+                                <li id="li_machines"><a class='menu-item' href="./{{sep}}machines">Machines management</a></li>
                                 <li id="li_admin_fablab"><a class='menu-item' href="./{{val}}adminfablab">Admin FabLab</a></li>
                                 
                             </ul>
